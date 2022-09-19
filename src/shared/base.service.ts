@@ -11,7 +11,7 @@ export class BaseService {
   }
 
   findOne(where: any): Promise<any> {
-    return this._repo.findOneBy(where);
+    return this._repo.findOneBy({email:where});
   }
 
   find(): Promise<any> {
@@ -19,6 +19,7 @@ export class BaseService {
   }
 
   create(fields: any): Promise<any> {
+    console.log(fields)
     return this._repo.save(fields);
   }
 

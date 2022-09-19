@@ -3,6 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app: NestExpressApplication = await NestFactory.create(AppModule);
@@ -14,6 +15,7 @@ async function bootstrap() {
     allowedHeaders: "*",
     origin: ["http://localhost:3000"]
   });
+  app.use(cookieParser());
 
   await app.listen(port, () => {
     console.log("[API UP]", config.get<string>('BASE_URL'));
