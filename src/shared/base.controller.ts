@@ -1,4 +1,5 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import JwtAuthenticationGuard from 'src/guard/jwtAuthentication.guard';
 
 interface DEFAULT_OPERATIONS {
   find?: boolean,
@@ -9,6 +10,7 @@ interface DEFAULT_OPERATIONS {
 }
 
 @Controller('')
+
 export class BaseController {
 
   protected _service: any;

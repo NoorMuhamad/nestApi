@@ -16,4 +16,4 @@ import { ShopService } from './shops/shop.service';
   providers: [UserService, ShopService]
 })
 
-export class authModule { }
+export class UserModule { }
