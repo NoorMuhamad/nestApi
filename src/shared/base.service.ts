@@ -10,17 +10,26 @@ export class BaseService {
     this._repo = repository;
   }
 
-  findOne(where: any): Promise<any> {
+  findOne(where: any): Promise<any> {    
     return this._repo.findOneBy({email:where});
+  }
+
+  findOneById(where: any): Promise<any> {
+    return this._repo.findOneBy({id:where});
   }
 
   find(): Promise<any> {
     return this._repo.find({});
   }
 
-  create(fields: any): Promise<any> {
-    console.log(fields)
-    return this._repo.save(fields);
+  async create(fields: any): Promise<any> {
+    try {
+      const data = await this._repo.save(fields);
+      return data  
+    } catch (error) {
+      console.log(error)
+    }
+    
   }
 
   update(id: number, fields: any): Promise<any> {

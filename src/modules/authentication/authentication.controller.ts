@@ -8,9 +8,10 @@ export class AuthenticationController {
   constructor(
     private readonly authenticationService: AuthenticationService
   ) {}
- 
+
   @Post('register')
   async register(@Body() registrationData) {
+
     return this.authenticationService.register(registrationData);
   }
  
@@ -18,9 +19,10 @@ export class AuthenticationController {
   @UseGuards(LocalAuthenticationGuard)
   @Post('login')
   async logIn(@Req() request: RequestWithUser) {
-    const {user} = request;
+    console.log(request.user)
+    const {user} = request;    
     const token = this.authenticationService.getJwtToken(user.id);
     user.password = undefined;
-    return {user,token}
+    return token
   }
 }

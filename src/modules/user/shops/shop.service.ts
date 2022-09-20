@@ -11,8 +11,12 @@ export class ShopService extends BaseService {
     super(_repo);
   }
 
-  getAllShops(id:number) {
-    console.log("yah")
+  /**
+   * @description
+   * @param id Number
+   * @returns 
+   */
+  getAllShops(id:number): Promise<Shop> {
     return this._repo.findOne({
       where: {
         usersId:id,

@@ -1,3 +1,4 @@
+import Role from 'src/enums/Roles';
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, OneToOne, JoinColumn } from 'typeorm';
 import { Shop } from '../shops/shop.entity';
 @Entity('users')
@@ -16,6 +17,12 @@ export class User {
 
   @Column({ type: 'varchar', length: 120 })
   public is_active: string;
+
+  @Column({
+    type: 'enum',
+    enum: Role,
+  })
+  public role: Role
 
   @OneToMany(() => Shop, (shop:Shop) => shop.users)
   public shop: Shop[]

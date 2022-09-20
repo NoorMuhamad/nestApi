@@ -18,6 +18,7 @@ import { User } from '../user/users/user.entity';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         secret: '123456',
+        
         signOptions: {
           expiresIn: '20h',
         },

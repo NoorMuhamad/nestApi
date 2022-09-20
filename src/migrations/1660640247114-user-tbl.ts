@@ -6,6 +6,7 @@ import {
   TableColumn,
   TableForeignKey,
 } from "typeorm"
+import Role from "src/enums/Roles"
 
 export class userTbl1660640247114 implements MigrationInterface {
   async up(queryRunner: QueryRunner): Promise<void> {
@@ -33,6 +34,13 @@ export class userTbl1660640247114 implements MigrationInterface {
         {
           name: "is_active",
           type: "boolean",
+        },
+        {
+          name:"role",
+          type:'enum',
+          enum: ['user','admin'],
+          enumName:'roleEnum',
+          // default:'"admin"'
         },
         {
           name: "created_at",

@@ -13,13 +13,18 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     private readonly userService: UserService,
   ) {
     super({
-			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-			ignoreExpiration: false,
-			secretOrKey: '123456',
-		})
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      ignoreExpiration: false,
+      secretOrKey: '123456'
+  })
   }
- 
+  
+  /**
+   * 
+   * @param payload 
+   * @returns 
+   */
   async validate(payload: any) {
-    return this.userService.findOne(payload.userId);
+    return this.userService.findOneById(payload.userId);
   }
 }

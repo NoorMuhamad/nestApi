@@ -2,8 +2,8 @@ import { existsSync } from 'fs';
 import { resolve } from 'path';
 
 /**
- * 
- * @param dest env path string  
+ * @description set accurate env for different environments
+ * @param dest string
  * @returns string
  */
 export function getEnvPath(dest: string): string {

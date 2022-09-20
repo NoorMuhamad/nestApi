@@ -5,8 +5,8 @@ export class insertUser1660641504958 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     queryRunner.query(
       `INSERT INTO users 
-        (id,name,email,password,is_active) 
-        VALUES (1, 'admin', 'admin@gmail.com', 'pass2word', true);`)
+        (id,name,email,password,is_active,role) 
+        VALUES (1, 'admin', 'admin@gmail.com', '$2b$10$.eREoYJnrUQoEtTuEYW54eXgmAvRHzTt.WWDJ2thz5oHw2eQZvuvy', true, 'admin');`)
         queryRunner.query(
           `INSERT INTO shops
             ("id",name,type,address,"usersId") 
